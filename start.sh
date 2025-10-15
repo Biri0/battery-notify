@@ -17,7 +17,7 @@ while true; do
   fi
 
   if [ "$status" = "Discharging" ] && [ $cur_bat -le $min_bat ]; then
-    threshold=$((cur_bat / 5 * 5))
+    threshold=$(((cur_bat - 1) / 5 * 5))
 
     if [ "$last_notified_bat" != "$threshold" ]; then
       notify-send "Low Battery Level" "Battery is at $cur_bat%. Please plug in the charger"
